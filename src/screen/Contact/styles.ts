@@ -1,22 +1,12 @@
 import { StyleSheet, Platform } from "react-native";
 
 const styles = StyleSheet.create({
+  safeAreaContainer: {
+    flex: 1
+  },
   container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#FFFFFF",
-  },
-  backTouchable: {
-    position: "absolute",
-    top: Platform.OS === "ios" ? 20 : 50,
-    left: 25,
-  },
-  back: {
-    flex: 1,
-    resizeMode: "contain",
-  },
+    flex: 1, flexDirection: "row", alignItems: "center", backgroundColor: "#FFF", paddingRight: 20, paddingLeft: 20
+  }
 });
 
 export default styles;

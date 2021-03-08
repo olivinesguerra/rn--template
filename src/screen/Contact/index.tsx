@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
 import  { CustomButton } from "../../components/atom/CustomButton";
+import styles from "./styles"
 
 const Stack = createStackNavigator();
 
@@ -18,8 +19,8 @@ export const ContactScreen = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 1, flexDirection: "row", alignItems: "center", backgroundColor: "#FFF", paddingRight: 20, paddingLeft: 20 }}>
+        <SafeAreaView style={styles.safeAreaContainer}>
+            <View style={styles.container}>
                 <CustomButton title={"Open Contact List"} buttonPress={buttonPress}></CustomButton>
             </View>
         </SafeAreaView>
