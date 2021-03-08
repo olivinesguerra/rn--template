@@ -13,10 +13,14 @@ const Stack = createStackNavigator();
 export const ContactScreen = () => {
     const navigation = useNavigation();
 
+    const buttonPress = () => {
+        console.log("meow");
+    };
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-                <CustomButton title={"Open Contact List"}></CustomButton>
+            <View style={{ flex: 1, flexDirection: "row", alignItems: "center", backgroundColor: "#FFF", paddingRight: 20, paddingLeft: 20 }}>
+                <CustomButton title={"Open Contact List"} buttonPress={buttonPress}></CustomButton>
             </View>
         </SafeAreaView>
     );

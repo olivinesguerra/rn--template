@@ -1,16 +1,20 @@
+
+import React from "react";
+
 import {
     TouchableOpacity,
     Text
 } from "react-native";
 
 type CustomButtonProps = {
-    title: string
+    title: string,
+    buttonPress: () => void
 };
 
-export const CustomButton = ({ title }: CustomButtonProps) => {
+export const CustomButton = ({ title, buttonPress }: CustomButtonProps) => {
     return (
-        <TouchableOpacity style={{ flex: 1, backgroundColor: "#000" }}>
-            <Text style={{ flex: 1, color: "#000" }}>{ title }</Text>
+        <TouchableOpacity style={{ flex: 1, backgroundColor: "#000", height: 50, alignItems: "center", justifyContent: "center" }} onPress={buttonPress}>
+            <Text style={{ color: "#FFF", textAlign: "center" }}>{ title }</Text>
         </TouchableOpacity>
     );
 }

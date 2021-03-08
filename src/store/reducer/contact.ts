@@ -2,12 +2,12 @@
 import { ContactsActionTypes, SET_SELECTED_CONTACT, SET_CONTACTS } from "../types";
 
 type ContactState = {
-    contacts?: [any];
+    contacts?: [any?];
     selectedContact?: any;
 };
   
 const INITIAL_STATE: ContactState = {
-    contacts: ["Dfsdfsdf"],
+    contacts: [],
     selectedContact: null,
 };
 

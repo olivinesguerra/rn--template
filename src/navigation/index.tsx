@@ -23,7 +23,7 @@ const Navigation = ({ }) => {
             />
             <Stack.Screen
               name="ContactListScreen"
-              component={ContactScreen}
+              component={ContactListScreen}
               options={{
                 animationTypeForReplace: "push",
               }}
