@@ -4,7 +4,7 @@ import {
     View
 } from "react-native";
 
-export const CustomButton = ({}) => {
+export const ContactListItem = ({}) => {
     return (
         <View style={{ flex: 1 }}>
             <Text style={{ color: "#FFF", textAlign: "center" }}>Temp</Text>

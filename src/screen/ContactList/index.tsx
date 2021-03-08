@@ -5,7 +5,10 @@ import {
     View,
     SafeAreaView,
     FlatList
-  } from "react-native";
+} from "react-native";
+import styles from "./styles";
+
+import { ContactListItem } from "../../components/molecule/ContactListItem"
 
 const Stack = createStackNavigator();
 
@@ -14,12 +17,14 @@ export const ContactListScreen = () => {
     const keyExtractor = (item: any, index: number) => index.toString();
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safeAreaContainer}>
+            <View style={styles.container}>
                 <FlatList
                     data={[{ a: 1 }, { a: 2 }]}
-                    style={{ flex: 1 }}
-                    renderItem={({ item }) => <View  />} />
+                    style={styles.flatList}
+                    renderItem={({ item }) => 
+                        <ContactListItem />
+                    } />
             </View>
         </SafeAreaView>
     );
