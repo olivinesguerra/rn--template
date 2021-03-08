@@ -7,8 +7,8 @@ interface SetSelectedContact {
 }
   
 interface SetContacts {
-    type: typeof SET_CONTACTS
-    payload: [any]
+  type: typeof SET_CONTACTS
+  payload: [any]
 }
   
 export type ContactsActionTypes = SetSelectedContact | SetContacts

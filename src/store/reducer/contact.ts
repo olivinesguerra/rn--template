@@ -14,7 +14,7 @@ const INITIAL_STATE: ContactState = {
 export function chatReducer(
     state = INITIAL_STATE,
     action: ContactsActionTypes
-  ): ContactState {
+): ContactState {
     switch (action.type) {
         case SET_SELECTED_CONTACT:
             return {
@@ -27,4 +27,4 @@ export function chatReducer(
       default:
         return state
     }
-  }
+}
