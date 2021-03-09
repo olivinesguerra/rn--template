@@ -6,7 +6,7 @@ import { ContactsActionTypes } from "../types";
 export const SET_SELECTED_CONTACT = "SET_SELECTED_CONTACT";
 export const SET_CONTACT_LIST = "SET_CONTACT_LIST";
 
-export const setSelectedContact = (contact: any): ContactsActionTypes => ({
+export const setSelectedContact = (contact: Contacts.Contact | null | undefined): ContactsActionTypes => ({
     type: SET_SELECTED_CONTACT,
     payload: contact,
 });

@@ -5,7 +5,7 @@ import * as Contacts from 'expo-contacts';
 
 export type ContactState = {
     contacts?: [Contacts.Contact?];
-    selectedContact?: any;
+    selectedContact?: Contacts.Contact | null;
 };
   
 const INITIAL_STATE: ContactState = {
@@ -14,7 +14,6 @@ const INITIAL_STATE: ContactState = {
 };
 
 export function chatReducer(state = INITIAL_STATE, action: ContactsActionTypes): ContactState {
-    // console.log(action.payload);
     switch (action.type) {
         case SET_SELECTED_CONTACT:
             return {

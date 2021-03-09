@@ -1,30 +1,29 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
-import * as Contacts from 'expo-contacts';
 import { 
     View,
     SafeAreaView,
-    FlatList
+    FlatList,
+    TouchableOpacity
 } from "react-native";
+import { Dispatch } from "redux";
+import { useDispatch } from "react-redux";
+
 import styles from "./styles";
 import { ContactState } from "../../store/reducer/contact";
+import { setSelectedContact } from "../../store/action/contact";
 
 import { ContactListItem } from "../../components/molecule/ContactListItem";
 
-const Stack = createStackNavigator();
+type ContactListScreenProps = {}
 
-type Props = {
-
-}
-
-export const ContactListScreen: React.FC<Props> = () => {
+export const ContactListScreen: React.FC<ContactListScreenProps> = () => {
     const navigation = useNavigation();
-    const keyExtractor = (item: any, index: number) => index.toString();
-    const contacts = useSelector<ContactState, ContactState["contacts"]>((state: ContactState) => state.chatReducer.contacts)
+    const dispatch: Dispatch<any> = useDispatch();
 
-    console.log(contacts);
+    const keyExtractor = (item: any, index: number) => index.toString();
+    const contacts = useSelector<ContactState, ContactState["contacts"]>((state: ContactState) => state.chatReducer.contacts);
 
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
@@ -34,7 +33,14 @@ export const ContactListScreen: React.FC<Props> = () => {
                     style={styles.flatList}
                     keyExtractor={keyExtractor}
                     renderItem={({ item, index }) => 
-                        <ContactListItem key={index} item={item}/>
+                        <TouchableOpacity 
+                            onPress={() => {
+                                dispatch(setSelectedContact(item))
+                                navigation.goBack();
+                            }}
+                        >
+                            <ContactListItem key={index} item={item}/>
+                        </TouchableOpacity>
                     } />
             </View>
         </SafeAreaView>
