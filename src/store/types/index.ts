@@ -1,5 +1,6 @@
-export const SET_SELECTED_CONTACT = 'SET_SELECTED_CONTACT'
-export const SET_CONTACTS = 'SET_CONTACTS'
+import * as Contacts from 'expo-contacts';
+
+import { SET_SELECTED_CONTACT, SET_CONTACT_LIST } from "../action/contact";
 
 interface SetSelectedContact {
   type: typeof SET_SELECTED_CONTACT
@@ -7,8 +8,8 @@ interface SetSelectedContact {
 }
   
 interface SetContacts {
-  type: typeof SET_CONTACTS
-  payload: [any]
+  type: typeof SET_CONTACT_LIST
+  payload: any
 }
   
 export type ContactsActionTypes = SetSelectedContact | SetContacts

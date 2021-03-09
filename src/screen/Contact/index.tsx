@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import {
     View,
     SafeAreaView,
 } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
+import { Dispatch } from "redux"
+import { useDispatch } from "react-redux"
+import * as Contacts from 'expo-contacts';
 
+import { setContacts } from "../../store/action/contact";
 import  { CustomButton } from "../../components/atom/CustomButton";
 import styles from "./styles"
 
-const Stack = createStackNavigator();
+type Props = {
 
-export const ContactScreen = () => {
+}
+
+export const ContactScreen: React.FC<Props> = ({ }) => {
     const navigation = useNavigation();
+    const dispatch: Dispatch<any> = useDispatch();
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await Contacts.requestPermissionsAsync();
+            if (status === 'granted') {
+                const { data } = await Contacts.getContactsAsync({
+                    fields: [
+                        Contacts.Fields.FirstName, 
+                        Contacts.Fields.Image, 
+                        Contacts.Fields.LastName, 
+                        Contacts.Fields.PhoneNumbers,
+                        Contacts.Fields.Image
+                    ],
+                });
+                dispatch(setContacts(data));
+          }
+        })();
+    }, []);
 
     const buttonPress = () => {
-        console.log("meow");
+        navigation.navigate("ContactListScreen");
     };
 
     return (
