@@ -30,6 +30,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ }) => {
     useEffect(() => {
         (async () => {
             const { status } = await Contacts.requestPermissionsAsync();
+            console.log(status);
             if (status === 'granted') {
                 const { data } = await Contacts.getContactsAsync({
                     fields: [
@@ -40,6 +41,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ }) => {
                         Contacts.Fields.Image
                     ],
                 });
+                console.log(data);
                 dispatch(setContacts(data));
           }
         })();
